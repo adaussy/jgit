@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2013, Gunnar Wagenknecht
  * Copyright (C) 2010, Chris Aniszczyk <caniszczyk@gmail.com>
  * Copyright (C) 2009, Christian Halstrick <christian.halstrick@sap.com>
  * Copyright (C) 2009, Google Inc.
@@ -113,6 +114,8 @@ public class CoreConfig {
 		TRUE
 	}
 
+	private final String attributesfile;
+
 	private CoreConfig(final Config rc) {
 		compression = rc.getInt(ConfigConstants.CONFIG_CORE_SECTION,
 				ConfigConstants.CONFIG_KEY_COMPRESSION, DEFAULT_COMPRESSION);
@@ -122,6 +125,8 @@ public class CoreConfig {
 				ConfigConstants.CONFIG_KEY_LOGALLREFUPDATES, true);
 		excludesfile = rc.getString(ConfigConstants.CONFIG_CORE_SECTION, null,
 				ConfigConstants.CONFIG_KEY_EXCLUDESFILE);
+		attributesfile = rc.getString(ConfigConstants.CONFIG_CORE_SECTION,
+				null, ConfigConstants.CONFIG_KEY_ATTRIBUTESFILE);
 	}
 
 	/**
@@ -150,5 +155,12 @@ public class CoreConfig {
 	 */
 	public String getExcludesFile() {
 		return excludesfile;
+	}
+
+	/**
+	 * @return path of attributesfile
+	 */
+	public String getAttributesFile() {
+		return attributesfile;
 	}
 }
